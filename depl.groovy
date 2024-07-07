@@ -7,12 +7,12 @@ pipeline {
     		script{
                 sh "python --version"
 		sh "ls -la"
-		}            
+		}
             }
         }
         stage('Сборка') {
             steps {
-    	    
+    	    echo 'Проводим сборку'
             }
         }
         stage('Тестирование') {

@@ -5,7 +5,6 @@ pipeline {
         stage('Подготовка') {
             steps {
     		script{
-                sh "python --version"
 		sh "ls -la"
 		}
             }

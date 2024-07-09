@@ -32,7 +32,7 @@ stages {
 	agent {
                 kubernetes {
                     cloud 'kubernetes'
-                    label 'cd'
+                    label 'jemkins'
                 }
             }	
 

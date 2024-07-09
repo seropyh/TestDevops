@@ -29,7 +29,12 @@ pipeline {
 agent any  
 stages {
         stage("deploy") {
-		
+	agent {
+                kubernetes {
+                    cloud 'kubernetes'
+                    label 'cd'
+                }
+            }	
 
             steps {
 		    script {

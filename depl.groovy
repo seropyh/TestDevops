@@ -29,11 +29,12 @@ pipeline {
 agent any    
 stages {
         stage("deploy") {
-		script {
-		sh "echo Hello world"	
-		}
+		
 
             steps {
+		    script {
+		sh "echo Hello world"	
+		}
                 container('cd') {
                     dir("helm") {
                         sh "echo 'Simple kubectl install!'"

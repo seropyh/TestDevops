@@ -30,12 +30,7 @@ agent any
 stages {
     
         stage("deploy") {
-            agent {
-                kubernetes {
-                    cloud 'kubernetes'
-                    label 'cd'
-                    yamlFile 'jenkins/python-cd.yaml'
-                }
+           sh "echo hello world"
             }
 
             steps {

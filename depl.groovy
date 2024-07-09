@@ -26,7 +26,7 @@ pipeline {
         }
     }
     */
-agent any    
+agent default-wpmcw   
 stages {
         stage("deploy") {
 		

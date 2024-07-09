@@ -29,13 +29,9 @@ pipeline {
 agent any    
 stages {
         stage("deploy") {
-            agent {
-                kubernetes {
-                    cloud 'kubernetes'
-                    label 'cd'
-                    yamlFile 'jenkins/python-cd.yaml'
-                }
-            }
+		script {
+		sh "echo Hello world"	
+		}
 
             steps {
                 container('cd') {

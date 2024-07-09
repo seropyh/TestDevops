@@ -28,6 +28,7 @@ pipeline {
     */
     
 stages {
+    agent any
         stage("deploy") {
             agent {
                 kubernetes {

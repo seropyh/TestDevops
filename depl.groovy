@@ -34,7 +34,7 @@ pipeline {
                 kubernetes {
                     cloud 'kubernetes'
                     label 'cd'
-                    yamlFile 'jenkins/python-cd.yaml'
+                
                 }
             }
 

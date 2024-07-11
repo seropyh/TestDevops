@@ -33,7 +33,7 @@ pipeline {
             agent {
                 kubernetes {
                     cloud 'kubernetes'
-                    label 'cd'
+                    label 'nginx'
                 
                 }
             }

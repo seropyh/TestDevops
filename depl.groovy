@@ -26,37 +26,35 @@
         }
     }
     */
-<<<<<<< HEAD
 agent any  
-=======
+
 pipeline {    
->>>>>>> b30914d (install helm pod)
+
 stages {
         stage("deploy") {
 	agent {
                 kubernetes {
                     cloud 'kubernetes'
-<<<<<<< HEAD
+
                     label 'jenkins'
                 }
             }	
-=======
                     label 'cd'
                     sh "echo Hello helm"
                 }    
             }
->>>>>>> b30914d (install helm pod)
+
 
         
             steps {
-<<<<<<< HEAD
+
 		    script {
 		sh "echo Hello world"	
 		}
                 container('jenkins') {
-=======
+                
                 container('nsnginx') {
->>>>>>> b30914d (install helm pod)
+
                     dir("helm") {
                         
                         sh "echo 'Simple helm install!'"

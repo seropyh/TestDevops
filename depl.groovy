@@ -30,6 +30,13 @@
 pipeline {
     agent none
     stages {
+        stage ("install helm"){
+        script {
+        sh "curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
+        sh "chmod 700 get_helm.sh"
+        sh"./get_helm.sh"
+        }
+        
         stage("deploy") {
             agent {
                 kubernetes {

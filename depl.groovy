@@ -26,7 +26,6 @@
         }
     }
     */
-    @Library('jenkins-devops-libs@v1.4.0')_
 pipeline {
     agent none
     stages {
@@ -46,8 +45,7 @@ pipeline {
                     label 'nginx'
                 
                 }
-            }
-
+            
             steps {
                 container('jenkins') {
                     dir("helm") {

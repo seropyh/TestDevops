@@ -12,7 +12,9 @@ pipeline {
             agent {
                 kubernetes {
                     cloud 'kubernetes'
-                    label 'nginx'   }
+                    label 'nginx'   
+            }
+                }
             steps {
                 container('jenkins') {
                     dir("helm") {
@@ -23,7 +25,7 @@ pipeline {
 
                         sh "echo 'upgrade app!'"
                         sh "./helm upgrade --install --wait app ./app"
-                    }
+                    
                 }
             }
         }

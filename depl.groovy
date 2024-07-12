@@ -1,31 +1,3 @@
-
-/*    agent  any
-
-    stages {
-        stage('Подготовка') {
-            steps {
-    		script{
-		sh "ls -la"
-		}
-            }
-        }
-        stage('Сборка') {
-            steps {
-    	    echo 'Проводим сборку'
-            }
-        }
-        stage('Тестирование') {
-            steps {
-                echo 'Тестируем нашу сборку'
-            }
-        }
-        stage('Развертывание') {
-            steps {
-                echo 'Переносим код в рабочую среду или создаем артефакт'
-            }
-        }
-    }
-    */
 pipeline {
     agent none
     stages {
@@ -35,17 +7,12 @@ pipeline {
         sh "curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
         sh "chmod 700 get_helm.sh"
         sh"./get_helm.sh"
-        }
-        }
-        }
+        }   }   }
         stage("deploy") {
             agent {
                 kubernetes {
                     cloud 'kubernetes'
-                    label 'nginx'
-                
-                }
-            
+                    label 'nginx'   }
             steps {
                 container('jenkins') {
                     dir("helm") {
@@ -61,4 +28,6 @@ pipeline {
             }
         }
     }
-}    
+    }    
+
+}

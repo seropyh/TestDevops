@@ -6,9 +6,14 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        
+        sh "ssh root@192.168.1.100 << EOF
+	    hostnamectl
+	    free -m
+	    grep daygeek /etc/passwd
+	    EOF"
+	    
         }   }   }
-        stage("deploy") {
+    /*    stage("deploy") {
             agent {
                 kubernetes {
                     cloud 'kubernetes'
@@ -17,7 +22,7 @@ pipeline{
                }
             steps {
             //    container('jenkins') {
-            container('jenkins01'){
+            container('jenkins01-0'){
                     dir("helm") {
                         //sh "echo 'Simple helm install!'"
             //            sh "wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz"
@@ -30,8 +35,6 @@ pipeline{
                         sh "./helm upgrade 01--install --wait app ./app" */
                 }
             }
-        }
-    }
-    }    
-
+        }    }    } */   
+ }
 }

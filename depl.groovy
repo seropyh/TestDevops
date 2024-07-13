@@ -6,18 +6,15 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        
-	    
         }   }   }
         stage("deploy") {
             agent {
                 kubernetes {
                     cloud 'kubernetes'
                     label 'jenkins'   
-                  }
-               }
+                  }               }
             steps {
-            //    container('jenkins') {
+
             container('jenkins01-0'){
                     dir("helm") {
                         sh "echo 'Simple helm install!'"
@@ -33,4 +30,3 @@ pipeline{
             }
         }    }    }
  }
-}

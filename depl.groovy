@@ -6,7 +6,7 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        sh "./helm"
+        sh "./helm repo list"
         }   }   }
         stage("deploy") {
             agent {

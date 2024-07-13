@@ -12,7 +12,7 @@ pipeline{
             agent {
                 kubernetes {
                     cloud 'kubernetes'
-                    label 'nginx'   
+                    label 'jenkins'   
             }
                 }
             steps {
@@ -25,7 +25,6 @@ pipeline{
 
                         sh "echo 'upgrade app!'"
                         sh "./helm upgrade --install --wait app ./app"
-                    
                 }
             }
         }

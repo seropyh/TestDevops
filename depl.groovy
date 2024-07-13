@@ -13,10 +13,11 @@ pipeline{
                 kubernetes {
                     cloud 'kubernetes'
                     label 'jenkins'   
-            }
-                }
+                  }
+               }
             steps {
-                container('jenkins') {
+            //    container('jenkins') {
+            service('jenkins01')
                     dir("helm") {
                         sh "echo 'Simple helm install!'"
                         sh "wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz"
@@ -24,7 +25,7 @@ pipeline{
                         sh "cp linux-amd64/helm ."
 
                         sh "echo 'upgrade app!'"
-                        sh "./helm upgrade --install --wait app ./app"
+                        sh "./helm upgrade 01--install --wait app ./app"
                 }
             }
         }

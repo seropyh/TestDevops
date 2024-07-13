@@ -6,7 +6,6 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        sh "ssh root@192.168.1.100 <<root
         
 	    
         }   }   }

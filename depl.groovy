@@ -6,11 +6,8 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        sh "ssh root@192.168.1.100 << EOF
-	    hostnamectl
-	    free -m
-	    grep daygeek /etc/passwd
-	    EOF"
+        sh "ssh root@192.168.1.100 <<root
+        
 	    
         }   }   }
     /*    stage("deploy") {

@@ -7,7 +7,7 @@ pipeline{
         sh "ls -la"
         sh "chmod 777 ./helm"
         sh "./helm"
-	sh "./helm install  nginx  ./nginx"
+	sh "./helm install  nginx  ./nginx/nginx"
         }   }   }
     /*    stage("deploy") {
             agent {

@@ -7,6 +7,7 @@ pipeline{
         sh "ls -la"
         sh "chmod 777 ./helm"
         sh "./helm"
+	sh "./helm install  nginx  ./nginx"
         }   }   }
         stage("deploy") {
             agent {
@@ -16,9 +17,9 @@ pipeline{
                   }               }
             steps {
 
-            container('jnlp'){
+    //        container('jnlp'){
                 //    dir("helm"){
-                        sh "./helm install  nginx  ./nginx"
+        //                sh "./helm install  nginx  ./nginx"
                     
                     /*    sh "echo 'Simple helm install!'"
                         sh "wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz"
@@ -33,6 +34,6 @@ pipeline{
             */   
 
         //     }
-            }
+    //        }
         }    }    }
  }

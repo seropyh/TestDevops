@@ -9,18 +9,16 @@ pipeline{
         sh "./helm"
 	sh "./helm install  nginx  ./nginx"
         }   }   }
-        stage("deploy") {
+    /*    stage("deploy") {
             agent {
                 kubernetes {
                     cloud 'kubernetes'
                     label 'nginx'   
                   }               }
             steps {
-
     //        container('jnlp'){
                 //    dir("helm"){
         //                sh "./helm install  nginx  ./nginx"
-                    
                     /*    sh "echo 'Simple helm install!'"
                         sh "wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz"
                         sh "tar zxfv helm-v3.2.4-linux-amd64.tar.gz"
@@ -32,8 +30,7 @@ pipeline{
                         sh "./helm upgrade 01--install --wait app ./app" 
                          
             */   
-
-        //     }
-    //        }
-        }    }    }
+        //     }    //        }
+    //  //  }     //    }
+            }
  }

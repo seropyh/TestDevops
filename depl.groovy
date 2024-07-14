@@ -15,7 +15,7 @@ pipeline{
                   }               }
             steps {
 
-            container('jenkins01-0'){
+            container('jnlp'){
                     dir("helm") {
                         sh "echo 'Simple helm install!'"
                         sh "wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz"

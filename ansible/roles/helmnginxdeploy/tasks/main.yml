@@ -1,1 +1,3 @@
-mmm
+- name: Shell command
+  shell: ls -la
+  become: True

@@ -9,6 +9,17 @@ pipeline{
         sh "./helm"
 	//sh "./helm install  nginx  ./nginx/nginx"
         }   }   }
+        stage(" execute Ansible") {
+           steps {
+                ansiblePlaybook (
+                    installation: 'ansible', //Name of the Ansible tool which you had provided in Jenkins Tools configuration
+                    inventory: './ansible/hosts', //Ansible inventory file path
+                    playbook: './ansible/playbook/nginxdepl.yml' //Name along with the path of the ansible playbook
+                )
+            }
+            }
+    }
+}            
     /*    stage("deploy") {
             agent {
                 kubernetes {
@@ -32,5 +43,5 @@ pipeline{
             */   
         //     }    //        }
     //  //  }     //    }
-            }
- }
+            
+ 

@@ -11,12 +11,14 @@ pipeline{
         }   }   }
         stage(" execute Ansible") {
            steps {
-                ansiblePlaybook (
+           ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/hosts.ini ./ansible/playbook/nginxdepl.yml -u ubuntu
+
+        /*        ansiblePlaybook (
                     installation: 'ansible', //Name of the Ansible tool which you had provided in Jenkins Tools configuration
                     inventory: './ansible/hosts', //Ansible inventory file path
                     playbook: './ansible/playbook/nginxdepl.yml' //Name along with the path of the ansible playbook
                 )
-            }
+        */    }
             }
     }
 }            

@@ -12,13 +12,15 @@ def remote = [:]
     remote.user = 'osv'
     remote.password = 'osv'
     remote.allowAnyHosts = true
+    remote.fileTransfer = 'SCP'
     stage('Remote SSH') {
       sshCommand remote: remote, command: "ls -lrt"
       sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
     }
     stage ('copy chart to remote server'){
-      writeFile file: './nginx/nginx', text: 'ls -lrt'
-      sshPut remote: remote, from: './nginx/nginx', into: '/home/osv/tchart'
+      //writeFile file: './nginx/nginx/*', text: 'ls -lrt'
+      
+      sshPut remote: remote, from: './nginx/nginx/*', into: './home/osv/tchart/'
     }
 }
 

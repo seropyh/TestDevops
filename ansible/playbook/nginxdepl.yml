@@ -1,9 +1,0 @@
----
-- name: deploy nginx
-  hosts: nginx
-  become:yes
-  vars: 
-     nginx_chart_dir: /nginx/nginx
-  roles:
-    - helmnginxdeploy
-  

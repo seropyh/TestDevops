@@ -1,3 +1,0 @@
-[nginx]
-192.168.49.2 ansible_user="osv" ansible_ssh_pass="osv" ansible_connection=ssh ansible_become_method=sudo ansible_becom=true
-

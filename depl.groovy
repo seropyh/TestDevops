@@ -6,7 +6,7 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        sh "ssh osv@192.168.49.1"
+        sh "ssh -n osv@192.168.49.1"
 	//sh "./helm install  nginx  ./nginx/nginx"
         }   }   }
     /*    stage(" execute Ansible") {

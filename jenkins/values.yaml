@@ -189,29 +189,33 @@ controller:
   # securityContextCapabilities:
   #  drop:
   #    - NET_RAW
-  securityContextCapabilities: {}
+  securityContextCapabilities: {
+
+   }
 
   # In the case of mounting an ext4 filesystem, it might be desirable to use `supplementalGroups` instead of `fsGroup` in
   # the `securityContext` block: https://github.com/kubernetes/kubernetes/issues/67014#issuecomment-589915496
   # podSecurityContextOverride:
-  #   runAsUser: 1000
-  #   runAsNonRoot: true
-  #   supplementalGroups: [1000]
-  #   capabilities: {}
+  
   # -- Completely overwrites the contents of the pod security context, ignoring the values provided for `runAsUser`, `fsGroup`, and `securityContextCapabilities`
-  podSecurityContextOverride: ~
+  podSecurityContextOverride: 
+     runAsUser: 0
+     runAsNonRoot: false
+     supplementalGroups: [0]
+     
 
   # -- Allow controlling the securityContext for the jenkins container
   containerSecurityContext:
     runAsUser: 0
     runAsGroup: 0
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: false
+    allowPrivilegeEscalation: true
 
   # For minikube, set this to NodePort, elsewhere uses LoadBalancer
   # Use ClusterIP if your setup includes ingress controller
   # -- k8s service type
-  serviceType: ClusterIP
+  serviceType: NodePort
+  #ClusterIP
 
   # -- k8s service clusterIP. Only used if serviceType is ClusterIP
   clusterIp:
@@ -220,7 +224,7 @@ controller:
   # -- k8s target port
   targetPort: 8080
   # -- k8s node port. Only used if serviceType is NodePort
-  nodePort:
+  nodePort: 30005
 
   # Use Local to preserve the client source IP and avoids a second hop for LoadBalancer and NodePort type services,
   # but risks potentially imbalanced traffic spreading.
@@ -321,7 +325,7 @@ controller:
   # -- Host port to listen for agents
   agentListenerHostPort:
   # -- Node port to listen for agents
-  agentListenerNodePort:
+  agentListenerNodePort: 50001
 
   # ref: https://kubernetes.io/docs/concepts/services-networking/service/#traffic-policies
   # -- Traffic Policy of for the agentListener service
@@ -393,8 +397,8 @@ controller:
   # Plugins will be installed during Jenkins controller start
   # -- List of Jenkins plugins to install. If you don't want to install plugins, set it to `false`
   installPlugins:
-    - kubernetes:4248.vfa_9517757b_b_a_
-    - workflow-aggregator:596.v8c21c963d92d
+    - kubernetes:4253.v7700d91739e5
+    - workflow-aggregator:600.vb_57cdd26fdd7
     - git:5.2.2
     - configuration-as-code:1810.v9b_c30a_249a_4c
 
@@ -558,7 +562,7 @@ controller:
         # -- Repository of the image that triggers the reload
         repository: kiwigrid/k8s-sidecar
         # -- Tag for the image that triggers the reload
-        tag: 1.27.4
+        tag: 1.27.5
       imagePullPolicy: IfNotPresent
       resources: {}
         #   limits:
@@ -567,6 +571,24 @@ controller:
         #   requests:
         #     cpu: 50m
         #     memory: 50Mi
+      # -- Enables additional volume mounts for the config auto-reload container
+      additionalVolumeMounts: []
+        #   - name: auto-reload-config
+        #     mountPath: /var/config/logger
+        #   - name: auto-reload-logs
+        #     mountPath: /var/log/auto_reload
+      # -- Config auto-reload logging settings
+      logging:
+        # See default settings https://github.com/kiwigrid/k8s-sidecar/blob/master/src/logger.py
+        configuration:
+          # -- Enables custom log config utilizing using the settings below.
+          override: false
+          logLevel: INFO
+          formatter: JSON
+          logToConsole: true
+          logToFile: false
+          maxBytes: 1024
+          backupCount: 3
 
       # -- The scheme to use when connecting to the Jenkins configuration as code endpoint
       scheme: http

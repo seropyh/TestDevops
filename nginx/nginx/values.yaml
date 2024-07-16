@@ -625,7 +625,7 @@ service:
   ## @param service.ports.https Service HTTPS port
   ##
   ports:
-    http: 80
+    http: 32080
     https: 443
   ##
   ## @param service.nodePorts [object] Specify the nodePort(s) value(s) for the LoadBalancer and NodePort service types.

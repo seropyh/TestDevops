@@ -22,6 +22,11 @@ def remote = [:]
       
       sshPut remote: remote, from: './nginx/nginx/', into: '~/tchart/'
     }
+    stage ('install  chart nginx to remote server'){
+      //writeFile file: './nginx/nginx/*', text: 'ls -lrt'
+      sshCommand remote: remote, command: "helm install -n  nsnginx nginx01 /home/osv/tchart/"
+      
+    }
 }
 
 }}}

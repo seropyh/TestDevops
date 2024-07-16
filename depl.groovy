@@ -22,10 +22,11 @@ def remote = [:]
     }
 }
 
+}}}
+}
 //        sh "ssh -i /root/.ssh/rsa_id -n -f osv@192.168.49.1 date"
 	//sh "./helm install  nginx  ./nginx/nginx"
-        }   }   }
-    /*    stage(" execute Ansible") {
+/*    stage(" execute Ansible") {
            steps {
            ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/hosts.ini ./ansible/playbook/nginxdepl.yml -u ubuntu
 
@@ -36,8 +37,8 @@ def remote = [:]
                 )
             }            
             } */ 
-    }
-}            
+    
+            
     /*    stage("deploy") {
             agent {
                 kubernetes {

@@ -3,9 +3,8 @@ pipeline{
     stages {
     
     stage('Remote SSH') {
-      steps {
-	step{     
-      def remote = [:]
+      steps {    
+        def remote = [:]
 	remote.name = 'test'
 	remote.host = '192.168.49.1'
 	remote.user = 'osv'
@@ -21,4 +20,4 @@ pipeline{
 }    
 }
 
-}
+

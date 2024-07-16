@@ -6,10 +6,10 @@ pipeline{
         script {
         sh "ls -la"
         sh "chmod 777 ./helm"
-        sh "./helm"
+        sh "ssh osv@192.168.49.1"
 	//sh "./helm install  nginx  ./nginx/nginx"
         }   }   }
-        stage(" execute Ansible") {
+    */    stage(" execute Ansible") {
            steps {
            ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/hosts.ini ./ansible/playbook/nginxdepl.yml -u ubuntu
 
@@ -18,8 +18,8 @@ pipeline{
                     inventory: './ansible/hosts', //Ansible inventory file path
                     playbook: './ansible/playbook/nginxdepl.yml' //Name along with the path of the ansible playbook
                 )
-        */    }
-            }
+            }            
+            } */ 
     }
 }            
     /*    stage("deploy") {

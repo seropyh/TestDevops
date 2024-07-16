@@ -625,14 +625,14 @@ service:
   ## @param service.ports.https Service HTTPS port
   ##
   ports:
-    http: 32080
+    http: 80
     https: 443
   ##
   ## @param service.nodePorts [object] Specify the nodePort(s) value(s) for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
   nodePorts:
-    http: ""
+    http: "32080"
     https: ""
   ## @param service.targetPort [object] Target port reference value for the Loadbalancer service types can be specified explicitly.
   ## Listeners for the Loadbalancer can be custom mapped to the http or https service.

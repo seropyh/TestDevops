@@ -9,11 +9,12 @@
 pipeline{
     agent any
     stages {
-    steps {
+    
     stage('Remote SSH') {
+      steps {
       sshCommand remote: remote, command: "ls -lrt"
       sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
-    }
+    }}
     stage ('copy chart to remote server'){
       sshPut remote: remote, from: './nginx/nginx/', into: '~/tchart/'
     }
@@ -21,7 +22,7 @@ pipeline{
 
       sshCommand remote: remote, command: "helm install -n  nsnginx nginx01 /home/osv/tchart/nginx/"
       sshRemove remote: remote, path: "/home/osv/tchart/nginx/"
-    }
+    
 }
 
 }

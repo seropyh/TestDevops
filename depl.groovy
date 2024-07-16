@@ -21,7 +21,7 @@ def remote = [:]
     }
     stage ('install  chart nginx to remote server'){
        sshCommand remote: remote, command: "helm install -n  nsnginx nginx01 /home/osv/tchart/nginx/"
-      
+       sshRemove remote: remote, path: "/home/osv/tchart/nginx/"  
     }
 }
 

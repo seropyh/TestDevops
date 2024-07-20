@@ -71,11 +71,14 @@
 7. Установка helm  на хост машину.
    # sudo yum install helm
 8. Установка дженкинса из локального каталога скаченного из репозитория
-   # helm install -n  jenkins jenkins01 /home/osv/helm_charts/git_devops/TestDevops/jenkins/
-9. Jenkins будет отвечать на порту 3005 на ip minicube c п.6 
+9.  Создаем нейспейс для дженкинса:
+    # kubectl create ns jenkins
+10. Устанавливаем чарт jenkins
+    # helm install -n  jenkins jenkins01 /home/osv/helm_charts/git_devops/TestDevops/jenkins/
+11. Jenkins будет отвечать на порту 3005 на ip minicube c п.6 
    У меня http://192.168.49.2:30005/
-10. Скачать плагин SSH Pipeline Steps
-11. Создать пайплайн и подключить его к репозиторию
+12. Скачать плагин SSH Pipeline Steps
+13. Создать пайплайн и подключить его к репозиторию
     Dashboard - создать итем  - вводим имя пайплайна - pipeline -  ок 
     Настройки пайплайна:
     Заходим в пайплайн - настройки
@@ -92,6 +95,12 @@
     private key  - enter directly  - add вставляем ключ ~/.ssh/id_rsa
     Branches to build - */main
     Script path depl.groovy
+14. Создаем временную папку для чарта nginx на хост машине.
+    # mkdir ~/tchart
+15. Создаем неймспейс
+      # kubectl create ns nsnginx
+17. Запускаем пайплайн.
+18. Nginx отвечает на порту 32080
     
 
 

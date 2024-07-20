@@ -1,5 +1,5 @@
 Для использования чартов необходимо
-1 На хостовой машине где будет развернут миникуб сгенерить ключевую пару:
+1. На хостовой машине где будет развернут миникуб сгенерить ключевую пару:
   Создание ключей SSH 
   Проверка есть ли ключи 
   # ls -l ~/.ssh
@@ -66,6 +66,32 @@
   установка аддона дашборда
   # minikube addons enable helm-tiller
   # minikube addons enable ingress
-6. установка helm  на хост машину.
+6. Определяем ip minikube
+   # minikube ip - сохраняем этот адрес  
+7. Установка helm  на хост машину.
    # sudo yum install helm
+8. Установка дженкинса из локального каталога скаченного из репозитория
+   # helm install -n  jenkins jenkins01 /home/osv/helm_charts/git_devops/TestDevops/jenkins/
+9. Jenkins будет отвечать на порту 3005 на ip minicube c п.6 
+   У меня http://192.168.49.2:30005/
+10. Скачать плагин SSH Pipeline Steps
+11. Создать пайплайн и подключить его к репозиторию
+    Dashboard - создать итем  - вводим имя пайплайна - pipeline -  ок 
+    Настройки пайплайна:
+    Заходим в пайплайн - настройки
+    Внизу: Pipeline
+    definition
+    Выбираем pineline script from SCM
+    Далее
+    SCM - Git
+    Repository URL - https://github.com/seropyh/TestDevops.git
+    Credintials
+    Add - Jenkins
+    kind: username with ssh key
+    username: .....
+    private key  - enter directly  - add вставляем ключ ~/.ssh/id_rsa
+    Branches to build - */main
+    Script path depl.groovy
+    
+
 

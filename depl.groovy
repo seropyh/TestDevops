@@ -9,7 +9,7 @@ def remote = [:]
     remote.name = 'test'
     remote.host = '192.168.49.1'
     remote.user = 'osv'
-    remote.password = 'osv'
+    remote.password = '********'
     remote.allowAnyHosts = true
     remote.fileTransfer = 'scp'
     stage('Remote SSH') {
